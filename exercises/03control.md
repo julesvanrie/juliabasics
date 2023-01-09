@@ -1,6 +1,6 @@
 # Control structures
 
-## Exercise one
+## Exercise 1
 
 For the European elections, one has to be 18 to be able to vote, but one must be 21 to be a candidate for the elections.
 
@@ -15,7 +15,7 @@ Write a control structure that takes a variable `age`, and that prints out if a 
 
 </details><br>
 
-## Exercise two
+## Exercise 2
 
 Create a variable mylongtext as hereunder.
 (Multiline strings in Julia are in between triple quotes.)
@@ -62,4 +62,55 @@ round(ratio, digits=3)         # 0.291
 round(ratio, digits=3) * 100   # 29.099999999999998   Why?
 round(100*ratio, digits=1)     # 29.1
 ```
+</details><br>
+
+
+## Exercise 3
+
+Write a program that:
+- Asks the user `What is your question?`
+- The user then inputs his question followed by \<ENTER\>
+- Prints the user's questions: `Your question was: ` followed by the user's question.
+- As you know, a questions ends with a question mark. So, the computer has to say `That's not a question!` to non-questions.
+- To any question the computer answers: `Computer says no...`
+- Repeats from the start
+- The program only stops if the user types any phrase that starts with `I'm going`. So, it stops in case of:
+  - `I'm going`
+  - `I'm going!`
+  - `I'm going now`
+But not in case of: `That's it! I'm going`
+
+To read input from the user, you can use this code snippet:
+```julia
+print("What is your question? ")
+answer = r
+```
+
+## Exercise 4
+
+Change your previous program, so that it automatically stops if the user does 3 consecutive attempts without asking a question (a question is any input containing a question mark). In that case the computer will say `I have had enough. I need a nap.`
+
+
+<details>
+  <summary>Hint 1</summary>
+
+  For exercise 3 you probably used a `while` loop.
+
+  So you could initiate a counter before the loop, increase it each time the user does not ask a question, and then check that counter in the while loop.
+</details><br>
+
+<details>
+  <summary>Second part</summary>
+
+  The computer should only stop after 3 **consecutive** attemps. So if the user has entered a non-question twice, and then enters a question, and then again a non-question, the computer should **not** exit.
+
+  Does your program work this way?
+</details><br>
+
+
+<details>
+  <summary>Hint 2</summary>
+
+  You initiated a counter, and increase it after every non-question. So what should happen with this counter when the user enters a question?
+
 </details><br>
