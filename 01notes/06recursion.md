@@ -56,15 +56,15 @@ function function3(c)
 end
 
 function function2(b)
-  return function3(b+2)
+  return function3(b+2) + 20
 end
 
 function function1(a)
-  return function2(a+1)
+  return function2(a+1) + 300
 end
 
 x = 2
-function1(x)
+z = function1(x)
 ```
 
 - A program always starts from its main part.
@@ -72,8 +72,8 @@ function1(x)
 - `function1` calls `function2` passing *a+1 = 2+1 = 3* as argument.
 - `function2` calls `function3` passing *b+2 = 3+2 = 5* as argument.
 - Now we have reached the end of these series of calls: `function3` does not call any other functions, but calculates *c+3 = 5+3 = 8* and returns it to `function2`. Once `function3` has done its work, it can be removed from the stack again.
-- Now that `function3` has returned, `function2` can finalize its calculation. It returns *8* to `function1`. `function2`, now that it has done its work, can be removed from the stack again.
-- Now that `function2` has returned, function1 can finalize its calculation. It returns *8* to the main program. `function1`, now that it has done its work, can be removed from the stack again.
+- Now that `function3` has returned, `function2` can finalize its calculation. It returns *28* to `function1`. `function2`, now that it has done its work, can be removed from the stack again.
+- Now that `function2` has returned, function1 can finalize its calculation. It returns *328* to the main program. `function1`, now that it has done its work, can be removed from the stack again.
 
 
 You can see the stack as a pile of work that needs to be done by the computer for this program. The pile builds up, and then gets reduced again.
@@ -85,12 +85,23 @@ On the stack, each time a couple of things are added:
   - 'free' values: other values
 - a reference to its immediate outside environment (from where the function was called: for `function2` this is to the environment of `function1`, for `function1` this is the main environment)
 
-| Start       | | One call      | | Two calls     | | Three calls   |
-| ----------- | | ------------- | | ------------- | | ------------- |
-| main    x=2 | | main      x=2 | | main      x=2 | | main      x=2 |
-|             | | function1 a=2 | | function1 a=2 | | function1 a=2 |
-|             | |               | | function2 b=3 | | function2 b=3 |
-|             | |               | |               | | function3 c=5 |
+**Stacking up:**
+
+| Start       | > | One call       | > | Two calls      | > | Three calls    |
+| ----------- |---| -------------  |---| -------------- |---| -------------- |
+| main,   x=2 |   | main,     x=2  |   | main     , x=2 |   | main,      x=2 |
+|             |   | function1, a=2 |   | function1, a=2 |   | function1, a=2 |
+|             |   |                |   | function2, b=3 |   | function2, b=3 |
+|             |   |                |   |                |   | function3, c=5 |
+
+**Unstacking:**
+
+| Three calls    | > | Two calls      | > | One call       | > | Done        |
+| -------------- |---| -------------- |---| -------------  |---| ----------- |
+| main,      x=2 |   | main     , x=2 |   | main,     x=2  |   | main,   x=2, z = 328 |
+| function1, a=2 |   | function1, a=2 |   | function1 :arrow_left: 328 | :arrow_upper_right:  |             |
+| function2, b=3 |   | function2 :arrow_left: 28 | :arrow_upper_right:  |                |   |             |
+| function3 :arrow_left: 8  | :arrow_upper_right:  |                |   |                |   |             |
 
 
 ## Alternatives
