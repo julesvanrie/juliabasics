@@ -104,6 +104,14 @@ On the stack, each time a couple of things are added:
 | function3 :arrow_right: 8  | :arrow_upper_right:  |                |   |                |   |             |
 
 
+**Stack overflow:**
+
+If too many functions are called, at a certain point there will not enough space to add more calls to the stack. The program hangs. This is what we call *stack overflow*. You could compare it too not having enough space on your single piece of paper to write the next line: you're blocked.
+
+Recursive functions over suffer from this. Most of the time it is because there is no *base case*, no end point. If in the factorial function you would forget the *0!* base case, factorial would continue with negative numbers until infinity.
+
+Maybe you had a base case, but it still overflows. Then you need an alternative solution.
+
 ## Alternatives
 
 Fortunately, these functions can often be rewritten using loops, and/or some storage of previous result. These solutions are often less straighforward to code. We will do this for the factorial function in the exercises.
