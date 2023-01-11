@@ -3,28 +3,28 @@
 ## Conditional execution
 ```julia
 # Example one
-if some condition
-	some stuff happens
-elseif some other condition
-	some other stuff happens
-elseif still some other condition
-	some other stuff happens
+if condition1
+	println("condition1 was true")
+elseif condition2
+	println("condition1 was false, condition2 was true")
+elseif condition3
+	println("condition1 and condition2 were false, condition3 was true")
 else
-	even other stuff happens (fallback scenario)
+	println("condition1, condition2 and condition3 were false, so fallback scenario")
 end
 ```
 ```julia
 # Example two
-if something
-	some stuff happens
+if condition1
+	println("condition1 was true")
 else
-  something different happens
-  if somethingelse
-	  some other stuff happens
+  println("condition1 was false")
+  if condition2
+	  println("condition1 was false, condition2 was true")
   else
-      even other stuff happens
+      println("condition1 and condition2 were false")
   end
-  here something can happen
+  println("condition1 was false; this prints independent of condition2")
 end
 ```
 
@@ -49,11 +49,13 @@ end
 
 ### **while** : iterate until something happens
 ```julia
-while not setended
-	play next game
-	if difference is two
-		setended = true
+weight = 0
+while weight < 3500
+  adding = rand(100:100:500)
+	weight = weight + adding
+	println("adding $(adding) ==> weight becomes $(weight)")
 end
+println("Loop has ended")
 ```
 
 ### Change execution : **break** and **continue**
@@ -61,14 +63,22 @@ end
 `break`: break out of the loop and continue afterwards
 
 ```julia
-total = 0
-while less than 7 cards
-	take another card
-	total += newcard.value
-	if total > 21
-		break
+weight = 0
+while weight < 3500
+  adding = rand(100:100:900)
+  print("adding $(adding)")
+  if adding > 500
+    if adding > 800
+      println(" ==> That is WAY too heavy ==> I stop completely")
+      break
+    end
+    println(" ==> That is too heavy ==> skipping this one")
+    continue
+  end
+	weight = weight + adding
+	println(" ==> That is ok ==> weight becomes $(weight)")
 end
-println("You lost")
+println("Loop has ended")
 ```
 
 

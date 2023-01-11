@@ -2,9 +2,9 @@
 
 ## Basics
 
-- Recursive function are functions that basically call themselves.
+- Recursive function are functions that call themselves.
 - Can be used to solve many problems
-- The idea is to solve a problem by reducing it to the some problem but smaller
+- The idea is to solve a problem by reducing it to the same problem but of a smaller size
 
 Let's look at an example to make it easier
 

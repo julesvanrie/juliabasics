@@ -2,7 +2,7 @@
 
 ## Exercise 1
 
-For the European elections, one has to be 18 to be able to vote, but one must be 21 to be a candidate for the elections.
+For the European elections, you to be 18 to be able to vote, but 21 to be a candidate for the elections.
 
 Write a control structure that takes a variable `age`, and that prints out if a person with that age can vote, can be a candidate, or is still too young.
 
@@ -17,7 +17,7 @@ Write a control structure that takes a variable `age`, and that prints out if a 
 
 ## Exercise 2
 
-Create a variable mylongtext as hereunder.
+Create a variable mylongtext as hereunder. Just copy the code.
 (Multiline strings in Julia are in between triple quotes.)
 ```julia
 mylongtext = """
@@ -39,10 +39,9 @@ Solemnly he came forward and mounted the round gunrest. He faced about and bless
 <details>
   <summary>Hint</summary>
 
-  - You will have to loop over every letter in mylongtext
-  - Test this code in the REPL: `'c' in "abcd"`
-  - Think how you can use this concept to isolate vowels
-  - To round the percentage you can use `round(number, digits=x)` with `x` the number of digits you want to keep
+  - You will have to loop over every letter in mylongtext.
+  - Test this code in the REPL: `'c' in "abcd"`. Think how you can use this concept to isolate vowels.
+  - To round the percentage you can use `round(number, digits=x)` with `x` the number of digits you want to keep.
 
 </details><br>
 
@@ -68,28 +67,27 @@ round(100*ratio, digits=1)     # 29.1
 ## Exercise 3
 
 Write a program that:
-- Asks the user `What is your question?`
-- The user then inputs his question followed by \<ENTER\>
-- Prints the user's questions: `Your question was: ` followed by the user's question.
-- As you know, a questions ends with a question mark. So, the computer has to say `That's not a question!` to non-questions.
-- To any question the computer answers: `Computer says no...`
-- Repeats from the start
-- The program only stops if the user types any phrase that starts with `I'm going`. So, it stops in case of:
-  - `I'm going`
-  - `I'm going!`
-  - `I'm going now`
-But not in case of: `That's it! I'm going`
+1. Asks the user `What is your question?`
+2. The user then inputs his question followed by \<ENTER\>
+3. Prints the user's questions: `Your question was: ` followed by the user's question.
+4. As you know, a questions ends with a question mark. So, if the user inputs text without a question mark, the computer has to say `That's not a question!`.
+4. To any question the computer answers: `Computer says no...` (It's a stupid computer...)
+5. Then it starts all over again. (Again asking the user for a question.)
+6. The program only stops if the user types any phrase that starts with `I'm going`. So, it stops in case of:
+    - `I'm going` or
+    - `I'm going!` or
+    - `I'm going now`.
+    - But not in case of: `That's it! I'm going`
 
 To read input from the user, you can use this code snippet:
 ```julia
 print("What is your question? ")
-answer = r
+answer = readline()
 ```
 
-## Exercise 4
+## [ADVANCED] Exercise 4
 
-Change your previous program, so that it automatically stops if the user does 3 consecutive attempts without asking a question (a question is any input containing a question mark). In that case the computer will say `I have had enough. I need a nap.`
-
+Change your previous program, so that it automatically stops if the user does 3 consecutive attempts without asking a question (a question is any input containing a question mark). In that case the computer will say `If you're not asking me questions I'm done.` and it will exit.
 
 <details>
   <summary>Hint 1</summary>

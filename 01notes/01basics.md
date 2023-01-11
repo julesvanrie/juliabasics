@@ -27,7 +27,7 @@ result = a + 2
 - spaces around `=`
 - indentation: 4 spaces (use tab key)
 - variable and functions: lowercase, avoid underscores `myvariable`, `myfunction`
-- Types and Modules: UpperCamelCasse: `MyType`, `MyModule`
+- Types and Modules: UpperCamelCase: `MyType`, `MyModule`
 
 ## Basic data types
 
@@ -36,7 +36,7 @@ result = a + 2
 - Using abstract types and concrete types
 - The 'top' abstract type is `Any`, so everything is an `Any`
 - Intermediary abstract types are for example `Integer` or `Float`
-- And finally we have concrete types
+- And finally we have concrete types, like `Int64` or `Int8`
 - Typing (= defining which type a variable has) is not required in Julia, but can improve efficiency (speed, storage space)
 
 ### Main numeric types
@@ -51,9 +51,9 @@ typeof(-1)
 
 # Float64 is the default for Floats
 typeof(2.1)
->>> Int64
+>>> Float64
 typeof(2.0)
->>> Int64
+>>> Float64
 # Alternative float notation
 1.5e-3 # for 0.0015
 1.e6   # for 1 000 000
@@ -68,7 +68,7 @@ false
 # Logical operators
 cond1 & cond2  # 'and'
 cond1 | cond2  # 'or'
-!cond1          # 'not'
+!cond1         # 'not'
 
 # Short-circuit operators: depending on cond1, cond2 is not evaluated
 cond1 && cond2  # 'and': if cond1 is false, cond2 is not evaluated

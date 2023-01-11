@@ -7,19 +7,17 @@ A collection of elements, in this case a sequence, meaning that the elements hav
 ## Creating arrays
 Upon creation, Julia detects the most specific abstract type that covers all elements.
 ```julia
-anarray = ["some text", 1, 2.5]   # Array of type Any
+intarray = [10, 20, 30, 40]       # Array of type Int64
 
-newarray = [10, 20, 30, 40]       # Array of type Int64
+floatarray = [10, 20.1, 30, 40]   # Array of type Float64
 
-anotherarray = [10, 20.1, 30, 40] # Array of type Float64
+anyarray = ["some text", 1, 2.5]  # Array of type Any
 
-emptyarray = []                   # Array of type Any
+emptyarray = []                   # Array of type Any (empty)
 
-emptyintarray = Int64[]           # Array of type Int64
+emptyintarray = Int64[]           # Array of type Int64 (empty)
 
-newarray[1] = "text"              # emptyarray is no longer empty but ["text"]
-
-emptyintarray[1] = 2.1            # Error: float won't fit into Int64[]
+intarray[1] = 2.1                 # Error: float won't fit into Int64[]
 ```
 
 ## Indexing
@@ -34,8 +32,8 @@ newarray[2:3]
     30
 
 newarray[1:2:4]
->>> 20
-    40
+>>> 10
+    30
 ```
 
 # Adding and removing elements
@@ -86,9 +84,9 @@ copyarray = newarray[:]
 
 # Careful when you reference an array
 a = [1, 2, 3]
-b = a
+b = a                # b points to the same array as a
 
-b[2] = 200
+b[2] = 200           # So, when I change b, I also change a
 
 a
 >>> 1

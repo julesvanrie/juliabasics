@@ -2,7 +2,7 @@
 
 ## Exercise 1
 
-A classic example for recursive function is the generation of [Fibonacci numbers](https://en.wikipedia.org/wiki/Fibonacci_number), which have a wide range of applications.
+A classic example for recursive function is the generation of [Fibonacci numbers](https://en.wikipedia.org/wiki/Fibonacci_number), which have a wide range of applications. (They are related to the golden ratio.)
 
 They are defined as follows:
 - F<sub>0</sub> = 0
@@ -16,7 +16,7 @@ So, some examples:
 - F<sub>5</sub> = F<sub>4</sub> + F<sub>3</sub> = 3 + 2 = 5
 - F<sub>6</sub> = F<sub>5</sub> + F<sub>4</sub> = 5 + 3 = 8
 
-These numbers seem to increase slowly, but F<sub>6</sub> amounts already to 4181!
+These numbers seem to increase slowly, but F<sub>6</sub> already amounts to 4181!
 
 Implement a recursive function `fib(n)` to calculate the n-th Fibonacci number.
 
@@ -44,8 +44,8 @@ end
 <details>
   <summary>Answer</summary>
 
-  It takes more and more time.
-  Think a second why? How many calculations are needed?
+  It takes more and more time to calculate the next Fibonacci number.
+  Think about why? How many calculations are needed?
 
 </details><br>
 
@@ -68,7 +68,7 @@ end
 
   The repetition in step 3 (second and third bullet) is not a typo. This same calculation is happening twice.
 
-  This branching repeats and repeats again, until you get 2^n branches. This will take forever as n gets larger.
+  This branching repeats and repeats again, until you get 2^n branches. This will take forever as n gets larger. There are many duplicate calculations happening.
 
   </details><br>
 
@@ -109,13 +109,13 @@ Print `fact(n)` for n from 1 to 24. Something strange happens. Do you know why? 
 
   Compare `fact(20)` with `2^63 - 1`.
 
-  So if you would multiple `fact(20)` with 63 to get `fact(21)` you are what we call "overflowing". An Int64 cannnot capture such huge numbers.
+  So if you would multiple `fact(20)` with 63 to get `fact(21)` you are what we call "overflowing". An `Int64` cannnot capture such huge numbers.
 
 </details><br>
 
 ## Exercise 4
 
-Let's try to rewrite `fact(n)` as a function without recursion, but using loops.
+Let's try to rewrite our previous `fact(n)` as a function without recursion, but using loops.
 
 <details>
   <summary>Answer</summary>
@@ -134,7 +134,7 @@ Mind, this would still have the same overflowing problem as the previous solutio
 
 </details><br>
 
-## Exercise 5
+## [ADVANCED] Exercise 5
 
 Now, finally, try to rewrite `fib(n)` (the Fibonacci numbers from the start) as a function without recursion, but using loops.
 
@@ -146,21 +146,28 @@ Think a bit about how you would solve it. If you get stuck, have a look at the s
   <summary>Answer</summary>
 
 ```julia
-fib_numbers = [1, 1]
+# We create an array in which we create the Fibonacci numbers that we have calculated
 function fib_loop(n)
-  if n == 0
+  fib_numbers = [1, 1]
+  if n == 0       # Just in case someone asks the Fibonacci number for 0
     return 0
   end
+  # If we haven't calculated the number before, let's calculate it.
   if n > length(fib_numbers)
+    # We start with the first Fibonacci number that we haven't calculated yet
+    # and loop up to the number that we're interested in
     for i in length(fib_numbers):n-1
-      push!(fib_numbers, fib_numbers[i] + fib_numbers[i-1])
+      # Calculate the Fibonacci number for i
+      fib_i = fib_numbers[i] + fib_numbers[i-1]
+      # And add it to the array in which we store the numbers
+      push!(fib_numbers, fib_i)
     end
   end
   return fib_numbers[n]
 end
 ```
 
-You will notice that it is more difficult to write out (or understand) this solution than the recursive version.
+You will notice that it is more difficult to write out (or even understand) this solution than the recursive version.
 
 But run the following code. It's the same as before (Fibonacci numbers up to 46)), but compare the speed to the previous version.
 

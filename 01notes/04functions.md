@@ -25,7 +25,7 @@ Julia returns automatically the last expression. The previous function could be 
 ```julia
 function distmiles(dist)
 	result = dist / 1.6
-  result
+    result
 end
 
 # or even shorter
@@ -41,23 +41,42 @@ distmiles = (dist) -> dist / 1.6
 ```julia
 distance = 200
 
-function move(person)  # person is the "parameter" of this function
-	distance = 10   # This distance is now different from the outside one
-	person.position += distance   # person moves 10 forward
+function move(position)       # position is the "parameter" of this function
+	position += distance      # moves 200 (based on global variable distance = 200)
+    println(position)
 end
 
-pers = Person()    # Creating a Person (whatever that may be)
-move(pers)      # Calling move with "argument" pers
+pos = 1000
+move(pos)                     # Calling move with "argument" pos
+# >>> 1200
 
 # Names inside the function are independent of names outside.
-# Once I pass pers as argument, inside the function,
-# it goes by the name person
+# Once I pass pos as argument, inside the function, it goes by the name position,
+# because that is how we defined the function.
 
-# I can also do this
-person = Person()
-move(person)
+# I can also do this: use the same name as in the function definition
+position = 2000
+move(position)
+# >>> 2200
 
-# Or
-john = Person()
-move(John)
+# Or use a completely unrelated name
+x = 3000
+move(x)
+# >>> 3200
+```
+
+If we define a local variable distance, this variable will be used.
+We say that the local variable distance has "shadowed" the global variable
+```julia
+distance = 200
+
+function move(position)       # person is the "parameter" of this function
+	distance = 10             # This distance is now different from the outside one
+	position += distance      # moves 10 (based on local variable distance)
+    println(position)
+end
+
+pos = 1000
+move(pos)                     # Calling move with "argument" pos
+# >>> 1010
 ```
