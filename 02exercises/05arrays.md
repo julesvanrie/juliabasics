@@ -1,24 +1,24 @@
 # Arrays
 
-# Exercise 1
+## Exercise 1
 
 Create an array `myarray` of 10 numbers.
 
 Created a new array `reversedarray` with the same 10 numbers, but in reversed order.
 
-# Exercise 2
+## Exercise 2
 
 Add a new number to the end of `myarray`.
 
 Add the same number to `reversedarray`, but at the beginning, so that `reversedarray` is still the same as `myarray` but in reversed order.
 
-# Exercise 3
+## Exercise 3
 
 Create a new array `alltogether` taking all the numbers of `myarray` followed by all the numbers of `reversedarray`.
 
 Make sure `myarray` is still the same array as before (with 11 elements).
 
-# Exercise 4
+## Exercise 4
 
 Write a function that checks if an array is symmetric. Test it on `alltogether`.
 
@@ -28,7 +28,7 @@ Write a function that checks if an array is symmetric. Test it on `alltogether`.
   Your function body can be as short as one line. Think of how you made the reverse of an array.
 </details><br>
 
-# Exercise 5
+## Exercise 5
 
 Write a program that asks a number (integer from 1 to 10) from the user, and prints out the number followed by the English word as in the example hereunder.
 
@@ -59,7 +59,7 @@ answer = readline()
   ```
 </details><br>
 
-# Exercise 6
+## Exercise 6
 
 Start with your `myarray` from exercise 1 (10 numbers).
 
