@@ -16,7 +16,7 @@ So, some examples:
 - F<sub>5</sub> = F<sub>4</sub> + F<sub>3</sub> = 3 + 2 = 5
 - F<sub>6</sub> = F<sub>5</sub> + F<sub>4</sub> = 5 + 3 = 8
 
-These numbers seem to increase slowly, but F<sub>6</sub> already amounts to 4181!
+These numbers seem to increase slowly, but F<sub>19</sub> already amounts to 4181!
 
 Implement a recursive function `fib(n)` to calculate the n-th Fibonacci number.
 
@@ -141,31 +141,6 @@ Now, finally, try to rewrite `fib(n)` (the Fibonacci numbers from the start) as 
 You will want to make an array for this one.
 
 Think a bit about how you would solve it. If you get stuck, have a look at the solution, and try to understand.
-
-<details>
-  <summary>Answer</summary>
-
-```julia
-# We create an array in which we create the Fibonacci numbers that we have calculated
-function fib_loop(n)
-  fib_numbers = [1, 1]
-  if n == 0       # Just in case someone asks the Fibonacci number for 0
-    return 0
-  end
-  # If we haven't calculated the number before, let's calculate it.
-  if n > length(fib_numbers)
-    # We start with the first Fibonacci number that we haven't calculated yet
-    # and loop up to the number that we're interested in
-    for i in length(fib_numbers):n-1
-      # Calculate the Fibonacci number for i
-      fib_i = fib_numbers[i] + fib_numbers[i-1]
-      # And add it to the array in which we store the numbers
-      push!(fib_numbers, fib_i)
-    end
-  end
-  return fib_numbers[n]
-end
-```
 
 You will notice that it is more difficult to write out (or even understand) this solution than the recursive version.
 
