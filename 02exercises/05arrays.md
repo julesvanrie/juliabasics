@@ -57,6 +57,9 @@ answer = readline()
   number = 7
   println("I am $(number)")    # Prints "I am 7"
   ```
+
+  You will have to translate the input from the user into a real number. `parse(Int64, "5")` will give you the number `5` in Int64 format.
+
 </details><br>
 
 ## Exercise 6
