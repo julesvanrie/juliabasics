@@ -10,7 +10,7 @@ julia> first = "John"
 julia> last = "Doe"
 "Doe"
 
-julia> first * " " * last
+julia> println(first * " " * last)
 "John Doe"
 ```
 
